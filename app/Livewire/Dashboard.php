@@ -2,12 +2,15 @@
 
 namespace App\Livewire;
 
-use App\Models\BillPayment;
 use Livewire\Component;
+use App\Models\BillPayment;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
+use Livewire\WithPagination;
 
 class Dashboard extends Component
 {
+    use WithPagination;
     
     public array $myChart = [
         'type' => 'pie',
@@ -38,8 +41,11 @@ class Dashboard extends Component
     {
         $billPayments = BillPayment::where('is_paid', false)->latest()->get();
 
+        $transactions = Auth::user()->transactions()->latest()->paginate(10);
+        
         return view('livewire.dashboard')->with([
             'billPayments' => $billPayments,
+            'transactions' => $transactions,
         ]);
     }
 }

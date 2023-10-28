@@ -14,7 +14,7 @@ trait TransactionTrait
             'amount' => $amount,
             'user_id' => auth()->user()->id,
             'type' => $type,
-            'descriptions' => $description,
+            'description' => $description,
             'reference_no' => uniqid(),
         ]);
     }

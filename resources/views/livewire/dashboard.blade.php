@@ -137,7 +137,7 @@
                         <x-stat
                             title="Total Income"
                             {{-- description="This month" --}}
-                            value="{{ Auth::user()->account_balance + Auth::user()->wallet->amount }}"
+                            value="{{ Auth::user()->account_balance ?? 0 + Auth::user()->wallet->amount ?? 0}}"
                             icon="o-arrow-trending-up"
                             tooltip-bottom="There" class="bg-warning" />
                         
@@ -163,7 +163,7 @@
                         <x-stat
                             title="Savings"
                             description="This month"
-                            value="{{ Auth::user()->savings }}"
+                            value="{{ Auth::user()->savings ?? 0 }}"
                             icon="o-arrow-trending-down"
                             class="text-orange-500"
                             color="text-pink-500"
@@ -178,7 +178,7 @@
             </div>
            
             <hr>
-            <div class="container mt-8 mx-auto grid grid-cols-12 gap-4">
+            <div class="container  mt-8 mx-auto grid grid-cols-12 gap-4">
                <div class="col-span-4"> 
                     <div class="card w-96 shadow-xl">
                         <ul class="menu bg-base-200  rounded-box">
@@ -227,6 +227,40 @@
                             </x-modal>
                         </ul>
 
+                        
+                    </div>
+               </div>
+
+               <div class="col-span-8 ps-4">
+                    <div class="card  shadow-xl">
+
+                        <div class="overflow-x-auto">
+                            <table class="table table-zebra bg-base-200  rounded-box">
+                              <!-- head -->
+                              <thead>
+                                <tr>
+                                  <th colspan="3"><h2 class="menu-title text-lg text-center">Recent Transactions</h2></th>
+                                  
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <!-- row 1 -->
+                                @foreach ($transactions as $transaction)
+                                    <tr>
+                                    <td>#</td>
+                                    <td class="@if ($transaction->type == 'debit') text-error @else text-success @endif">{{ $transaction->type }}</td>
+                                    <td>{{ $transaction->description }}</td>
+                                    <td>N {{ $transaction->amount }}</td>
+                                    <td>{{ $transaction->reference_no }}</td>
+                                     <td>{{ date_format(new DateTime($transaction->created_at), "d M Y, h:ia") }}</td>
+                                    </tr>
+                                @endforeach
+                                
+                              </tbody>
+                              <div>{{ $transactions->links() }}</div>
+                            </table>
+                            
+                          </div>
                         
                     </div>
                </div>

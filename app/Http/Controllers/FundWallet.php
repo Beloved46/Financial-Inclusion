@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Exceptions\WalletFundException;
 use App\Http\Requests\FundWalletRequest;
+use App\Models\Transaction;
 
 class FundWallet extends Controller
 {
@@ -49,7 +50,7 @@ class FundWallet extends Controller
 
                     $user->update(['account_balance' => $balance]);
 
-                    $this->createTransaction($request->amount, $request->type, 'wallet funding');
+                    $this->createTransaction($request->amount, Transaction::CREDIT, 'wallet funding');
                    });
 
                     # code...
