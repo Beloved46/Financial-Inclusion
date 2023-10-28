@@ -12,7 +12,7 @@
     </head>
     <body class="min-h-screen font-sans antialiased">
         <x-main full-width>
-            <x-slot:sidebar drawer="main-drawer" collapsible class="pt-3 text-white" style="background-color: #471fbb;">
+            <x-slot:sidebar drawer="main-drawer" collapsible class="pt-3 text-white" style="background-color: #7400B8;">
          
                 {{-- Hidden when collapsed --}}
                 {{-- <div class="hidden-when-collapsed ml-5 font-black text-4xl text-yellow-500">mary</div> --}}
@@ -27,7 +27,7 @@
                     @if($user = auth()->user())
                         <div class="avatar">
                             <div class="w-24 rounded-full mb-3 h-20">
-                            <img src="https://cdn5.vectorstock.com/i/1000x1000/43/94/default-avatar-photo-placeholder-icon-grey-vector-38594394.jpg" />
+                            <img src="{{ asset('img/avatar.jpg') }}" />
                             </div>
                         </div>
                         <x-menu-sub title="{{ Auth::user()->name }}" icon="o-cog-6-tooth">
@@ -51,10 +51,10 @@
                     
                     <x-menu-separator />
 
-                    <x-menu-item title="Home" icon="o-home" class="font-bold" link="/docs/components/alert" />
+                    <x-menu-item title="Home" icon="o-home" class="font-bold" link="/" />
                     <x-menu-item title="Transactions" icon="o-arrow-path-rounded-square" class="font-bold" link="/docs/components/alert" />
-                    <x-menu-item title="Bill Payment" icon="o-ticket" class="font-bold" link="/docs/components/alert" />
-                    <x-menu-item title="Settings" icon="o-cog-6-tooth" link="/docs/components/alert" />
+                    <x-menu-item title="Analysis" icon="o-ticket" class="font-bold" link="#" />
+                    <x-menu-item title="Settings" icon="o-cog-6-tooth" link="#" />
                  
                     <x-menu-separator />
                  

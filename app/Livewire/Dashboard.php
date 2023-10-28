@@ -2,12 +2,13 @@
 
 namespace App\Livewire;
 
+use App\Models\BillPayment;
 use Livewire\Component;
 use Illuminate\Support\Arr;
 
 class Dashboard extends Component
 {
-
+    
     public array $myChart = [
         'type' => 'pie',
         'data' => [
@@ -31,9 +32,14 @@ class Dashboard extends Component
         $type = $this->myChart['type'] == 'bar' ? 'pie' : 'bar';
         Arr::set($this->myChart, 'type', $type);
     }
+
     
     public function render()
     {
-        return view('livewire.dashboard');
+        $billPayments = BillPayment::where('is_paid', false)->latest()->get();
+
+        return view('livewire.dashboard')->with([
+            'billPayments' => $billPayments,
+        ]);
     }
 }
