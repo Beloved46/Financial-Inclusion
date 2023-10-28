@@ -1,7 +1,6 @@
 <div>
     {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
 
-    {{-- <x-layouts.app> --}}
         <x-slot name="header">
             {{-- <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 {{ __('Dashboard') }}
@@ -9,6 +8,37 @@
         </x-slot>
     
         <div class="py-12">
+            <div class="mx-auto stats bg-primary text-primary-content">
+  
+                <div class="stat">
+                  <div class="stat-title">Account balance</div>
+                  <div class="stat-value">N {{ Auth::user()->account_balance }}</div>
+                  <div class="stat-actions">
+                    <button class="btn btn-sm btn-success">Add funds</button>
+                  </div>
+                </div>
+                
+                <div class="stat">
+                  <div class="stat-title">Wallet balance</div>
+                  <div class="stat-value">N89,400</div>
+                  <div class="stat-actions">
+                    <button class="btn btn-sm">Fund wallet</button> 
+                  </div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-title">Savings</div>
+                    <div class="stat-value">N89,400</div>
+                    <div class="stat-actions">
+                      <button class="btn btn-sm">Withdraw</button> 
+                    </div>
+                </div>
+                
+               
+                
+            </div>
+
+
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 grid grid-cols-2 gap-4">
                 <!-- Left side with the card image -->
                 <div class="w-full lg:col-span-1">
