@@ -1,36 +1,75 @@
 <div>
     {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
-
-        <x-slot name="header">
-            {{-- <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Dashboard') }}
-            </h2> --}}
-        </x-slot>
     
+        <x-slot name="header">
+
+           //
+        </x-slot>
+        @if (session('success'))
+        <div class="toast toast-center toast-top">
+        
+            <div class="alert alert-success">
+            <span>{{ session('success') }}</span>
+            </div>
+        </div>
+    @endif
+
+    @if (session('error'))
+        <div class="toast toast-center toast-top">
+        
+            <div class="alert alert-error">
+            <span>{{ session('error') }}</span>
+            </div>
+        </div>
+    @endif 
         <div class="py-12">
             <div class="mx-auto stats bg-primary text-primary-content">
   
                 <div class="stat">
                   <div class="stat-title">Account balance</div>
-                  <div class="stat-value">N {{ Auth::user()->account_balance }}</div>
+                  <div class="stat-value">N {{ Auth::user()->account_balance ?? 0}}</div>
                   <div class="stat-actions">
-                    <button class="btn btn-sm btn-success">Add funds</button>
+                    {{-- <button class="btn btn-sm btn-success" onclick="modal17.showModal()">Add funds</button> --}}
+
                   </div>
                 </div>
                 
                 <div class="stat">
                   <div class="stat-title">Wallet balance</div>
-                  <div class="stat-value">N89,400</div>
+                  <div class="stat-value">N {{ Auth::user()->wallet->amount ?? 0 }}</div>
                   <div class="stat-actions">
-                    <button class="btn btn-sm">Fund wallet</button> 
+                    <button class="btn btn-sm btn-success" onclick="modalwallet.showModal()">Fund wallet</button> 
+
+                    <x-modal id="modalwallet" title="Fund wallet">
+                        
+                        
+                        <x-form action="{{ route('wallet.fund') }}" method="POST">
+                            @csrf
+                            <x-input label="Amount" name="amount" prefix="NGN" required/>
+
+                            <select class="select select-primary mt-5 w-full max-w-xs" name="type" required>
+                                <option disabled selected>Select Account to fund wallet from</option>
+                                <option value="account_balance">Account Balance</option>
+                                <option value="savings">Savings</option>
+                            </select>
+
+                            {{-- <x-input label="Amount" wire:model="amount" prefix="USD" money hint="It submits an unmasked value" /> --}}
+                            <x-slot:actions>
+                                <x-button label="Cancel" onclick="modalwallet.close()"/>
+                                <x-button label="Fund" class="btn-md btn-primary" type="submit" spinner="save" />
+                            </x-slot:actions>
+                        </x-form>
+                    </x-modal>
+                    
                   </div>
                 </div>
 
                 <div class="stat">
                     <div class="stat-title">Savings</div>
-                    <div class="stat-value">N89,400</div>
+                    <div class="stat-value">N {{ Auth::user()->savings ?? 0}}</div>
                     <div class="stat-actions">
                       <button class="btn btn-sm">Withdraw</button> 
+                      <button class="btn btn-sm">Save</button> 
                     </div>
                 </div>
                 

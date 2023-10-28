@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('amount');
             $table->string('type');
             $table->string('description')->nullable();
+            $table->string('reference_no')->nullable();
             $table->foreignId('user_id')->nullable()->constrained();
             $table->timestamps();
         });

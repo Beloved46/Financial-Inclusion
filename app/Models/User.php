@@ -24,6 +24,7 @@ class User extends Authenticatable
         'email',
         'account_number',
         'account_balance',
+        'savings',
         'password',
     ];
 
@@ -51,10 +52,17 @@ class User extends Authenticatable
     {
         parent::boot();
         static::creating(function ($model) {
-            $model->account_balance = '50000';
+            $model->account_balance = '500000';
+            $model->savings = '89000';
         });
     }
 
+
+    protected $cast = [
+        'account_balance' => 'float',
+        'savings' => 'float',
+    ];
+    
 
     public function wallet(): HasOne
     {
