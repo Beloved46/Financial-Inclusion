@@ -1,8 +1,14 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use App\Livewire\Dashboard;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+
+if (App::environment('production')) {
+    URL::forceScheme('https');
+}
 
 /*
 |--------------------------------------------------------------------------
