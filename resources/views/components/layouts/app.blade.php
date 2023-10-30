@@ -74,7 +74,9 @@
                  
                  
                     <div class="w-24 rounded-full mt-12 h-20">
+                       <a href="{{ route('chat-bot') }}">
                         <img src="{{ asset('img/pngtree-smart-chatbot-cartoon-clipart-png-image_6620453.png') }}" />
+                       </a>
                     </div>
                    
                 </x-menu>

@@ -270,7 +270,9 @@
                  
                  
                     <div class="w-24 rounded-full mt-12 h-20">
+                       <a href="<?php echo e(route('chat-bot')); ?>">
                         <img src="<?php echo e(asset('img/pngtree-smart-chatbot-cartoon-clipart-png-image_6620453.png')); ?>" />
+                       </a>
                     </div>
                    
                  <?php echo $__env->renderComponent(); ?>
