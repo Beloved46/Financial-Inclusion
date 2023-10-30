@@ -328,7 +328,6 @@
                 <div class="max-w-7xl mt-8 mx-auto sm:px-6 lg:px-8">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         
-                        
                         <!-- Right side with statistics -->
                         <div class="w-full mt-5">
                             <!-- First row of statistics -->
@@ -404,7 +403,7 @@
 
                         <!-- Left side with the card image -->
                         <div class="w-full">
-                            <div class="w-96 sm:w-full rounded-full mb-3 h-80">
+                            <div class=" ms-5 sm:w-full rounded-full mb-3 h-80">
                                 <?php if (isset($component)) { $__componentOriginal0733d91eecb57dd40f6337077004fe75 = $component; } ?>
 <?php $component = Mary\View\Components\Chart::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('chart'); ?>
@@ -413,7 +412,7 @@
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Mary\View\Components\Chart::class))->getConstructor()): ?>
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['wire:model' => 'myChart','class' => 'h-80']); ?>
+<?php $component->withAttributes(['wire:model' => 'myChart','class' => 'h-80 float-right']); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__componentOriginal0733d91eecb57dd40f6337077004fe75)): ?>
@@ -518,9 +517,6 @@
                                     <li class="my-4"><button class="btn btn-neutral-content">Groceries<div class="badge">N 300000</div><div class="badge badge-secondary">pay</div></button></li>
                                     <li class="my-4"><button class="btn btn-neutral-content">Electricity<div class="badge">N 40000</div><div class="badge badge-secondary">pay</div></button></li>
                                     <li class="my-4"><button class="btn btn-neutral-content">Pet Food<div class="badge">N 9000</div></button></li>
-                                    <li class="my-4">
-                                        <button class="btn btn-neutral-content">Groceries<div class="badge">N 300000</div><div class="badge badge-secondary">pay</div></button>
-                                    </li>
                                     <!-- Add more list items here -->
                                     <?php if (isset($component)) { $__componentOriginal89a573612f1f1cb2dd9fc072235d4356 = $component; } ?>
 <?php $component = Mary\View\Components\Modal::resolve(['id' => 'modalPayments','title' => 'Add Expense'] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>

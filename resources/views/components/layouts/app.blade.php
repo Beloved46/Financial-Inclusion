@@ -65,13 +65,17 @@
                     <x-menu-separator />
 
                     <x-menu-item title="Home" icon="o-home" class="font-bold" link="/" />
-                    <x-menu-item title="Transactions" icon="o-arrow-path-rounded-square" class="font-bold" link="/docs/components/alert" />
+                    <x-menu-item title="Transact" icon="o-arrow-path-rounded-square" class="font-bold" link="#" />
                     <x-menu-item title="Analysis" icon="o-ticket" class="font-bold" link="#" />
+                    <x-menu-item title="Loans" icon="o-hand-raised" class="font-bold" link="#" />
                     <x-menu-item title="Settings" icon="o-cog-6-tooth" link="#" />
                  
                     <x-menu-separator />
                  
                  
+                    <div class="w-24 rounded-full mt-12 h-20">
+                        <img src="{{ asset('img/pngtree-smart-chatbot-cartoon-clipart-png-image_6620453.png') }}" />
+                    </div>
                    
                 </x-menu>
             </x-slot:sidebar>

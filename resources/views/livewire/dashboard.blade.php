@@ -124,7 +124,6 @@
                 <div class="max-w-7xl mt-8 mx-auto sm:px-6 lg:px-8">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         
-                        
                         <!-- Right side with statistics -->
                         <div class="w-full mt-5">
                             <!-- First row of statistics -->
@@ -175,8 +174,8 @@
 
                         <!-- Left side with the card image -->
                         <div class="w-full">
-                            <div class="w-96 sm:w-full rounded-full mb-3 h-80">
-                                <x-chart wire:model="myChart" class="h-80" />
+                            <div class=" ms-5 sm:w-full rounded-full mb-3 h-80">
+                                <x-chart wire:model="myChart" class="h-80 float-right" />
                             </div>
                         </div>
                     </div>
@@ -220,9 +219,6 @@
                                     <li class="my-4"><button class="btn btn-neutral-content">Groceries<div class="badge">N 300000</div><div class="badge badge-secondary">pay</div></button></li>
                                     <li class="my-4"><button class="btn btn-neutral-content">Electricity<div class="badge">N 40000</div><div class="badge badge-secondary">pay</div></button></li>
                                     <li class="my-4"><button class="btn btn-neutral-content">Pet Food<div class="badge">N 9000</div></button></li>
-                                    <li class="my-4">
-                                        <button class="btn btn-neutral-content">Groceries<div class="badge">N 300000</div><div class="badge badge-secondary">pay</div></button>
-                                    </li>
                                     <!-- Add more list items here -->
                                     <x-modal id="modalPayments" title="Add Expense">
                                    
