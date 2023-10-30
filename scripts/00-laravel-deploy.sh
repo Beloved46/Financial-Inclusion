@@ -18,10 +18,12 @@ curl -fsSL https://deb.nodesource.com/setup_20.5.0 | bash -
 apt-get install -y nodejs  --no-dev --working-dir=/var/www/html
 
 echo "Install yarn..."
-npm install -g npm@10.2.1 --no-dev --working-dir=/var/www/html
+npm install -g yarn --no-dev --working-dir=/var/www/html
+# npm install -g npm@10.2.1 --no-dev --working-dir=/var/www/html
 
-echo "Install yarn..."
-npm build --no-dev --working-dir=/var/www/html
+
+# echo "Install yarn..."
+# npm build --no-dev --working-dir=/var/www/html
 
 
 echo "Install yarn..."
