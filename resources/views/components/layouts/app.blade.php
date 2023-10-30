@@ -10,6 +10,8 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         {{-- Chart.js  --}}
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+
     </head>
     <body class="min-h-screen font-sans antialiased">
         <x-nav sticky full-width class="pt-3  text-white" style="background-color: #7400B8;">
@@ -72,7 +74,7 @@
                  
                  
                     <div class="w-24 rounded-full mt-12 h-20">
-                       <a href="{{ route('chat-bot') }}">
+                       <a href="#">
                         <img src="{{ asset('img/pngtree-smart-chatbot-cartoon-clipart-png-image_6620453.png') }}" />
                        </a>
                     </div>
@@ -84,8 +86,25 @@
             <x-slot:content>
                 {{ $slot }} 
             </x-slot:content>
+
+            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/assets/css/chat.min.css">
+            
         </x-main>
 
          
     </body>
+
+    <script>
+        var botmanWidget = {
+            aboutText: 'Start the conversation with Hi',
+            introMessage: "WELCOME TO ALL FINPAL",
+            mainColor: "#7400B8",
+            title: "Finpal Bot",
+            chatServer:"/botman",
+            bubbleBackground:"#7400B8",
+            bubbleAvatarUrl:"https://png.pngtree.com/png-vector/20230225/ourmid/pngtree-smart-chatbot-cartoon-clipart-png-image_6620453.png"
+        };
+    </script>
+   
+    <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
 </html>

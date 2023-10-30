@@ -10,6 +10,8 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+
     </head>
     <body class="min-h-screen font-sans antialiased">
         <?php if (isset($component)) { $__componentOriginalc7e9ca4bc90f51d317ff9ec682225f58 = $component; } ?>
@@ -268,7 +270,7 @@
                  
                  
                     <div class="w-24 rounded-full mt-12 h-20">
-                       <a href="<?php echo e(route('chat-bot')); ?>">
+                       <a href="#">
                         <img src="<?php echo e(asset('img/pngtree-smart-chatbot-cartoon-clipart-png-image_6620453.png')); ?>" />
                        </a>
                     </div>
@@ -285,6 +287,9 @@
              <?php $__env->slot('content', null, []); ?> 
                 <?php echo e($slot); ?> 
              <?php $__env->endSlot(); ?>
+
+            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/assets/css/chat.min.css">
+            
          <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__componentOriginal11da67fd6f50ab34ca1b98cbdd145132)): ?>
@@ -294,5 +299,19 @@
 
          
     </body>
+
+    <script>
+        var botmanWidget = {
+            aboutText: 'Start the conversation with Hi',
+            introMessage: "WELCOME TO ALL FINPAL",
+            mainColor: "#7400B8",
+            title: "Finpal Bot",
+            chatServer:"/botman",
+            bubbleBackground:"#7400B8",
+            bubbleAvatarUrl:"https://png.pngtree.com/png-vector/20230225/ourmid/pngtree-smart-chatbot-cartoon-clipart-png-image_6620453.png"
+        };
+    </script>
+   
+    <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
 </html>
 <?php /**PATH /var/www/finpal/resources/views/components/layouts/app.blade.php ENDPATH**/ ?>
