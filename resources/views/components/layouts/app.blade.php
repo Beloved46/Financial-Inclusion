@@ -26,9 +26,7 @@
             </x-slot:brand>
         </x-nav>
         <x-main full-width>
-          
-            
-            
+         
             <x-slot:sidebar drawer="main-drawer" collapsible class="pt-3  text-white" style="background-color: #7400B8;">
          
                 {{-- Hidden when collapsed --}}
@@ -64,7 +62,7 @@
                     
                     <x-menu-separator />
 
-                    <x-menu-item title="Home" icon="o-home" class="font-bold" link="/" />
+                    <x-menu-item title="Home" icon="o-home" class="font-bold" link="/dashboard" />
                     <x-menu-item title="Transact" icon="o-arrow-path-rounded-square" class="font-bold" link="#" />
                     <x-menu-item title="Analysis" icon="o-ticket" class="font-bold" link="#" />
                     <x-menu-item title="Loans" icon="o-hand-raised" class="font-bold" link="#" />

@@ -61,9 +61,7 @@
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
-          
-            
-            
+         
              <?php $__env->slot('sidebar', null, ['drawer' => 'main-drawer','collapsible' => true,'class' => 'pt-3  text-white','style' => 'background-color: #7400B8;']); ?> 
          
                 
@@ -177,7 +175,7 @@
 <?php endif; ?>
 
                     <?php if (isset($component)) { $__componentOriginal7c3255ff27a5c6d076ca64dbcfc1f879 = $component; } ?>
-<?php $component = Mary\View\Components\MenuItem::resolve(['title' => 'Home','icon' => 'o-home','link' => '/'] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component = Mary\View\Components\MenuItem::resolve(['title' => 'Home','icon' => 'o-home','link' => '/dashboard'] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('menu-item'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
