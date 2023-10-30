@@ -7,19 +7,32 @@
         <title>{{ $title ?? 'FinPal' }}</title>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         {{-- Chart.js  --}}
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     </head>
     <body class="min-h-screen font-sans antialiased">
+        <x-nav sticky full-width class="pt-3  text-white" style="background-color: #7400B8;">
+ 
+            <x-slot:brand>
+                {{-- Drawer toggle for "main-drawer" --}}
+                <label for="main-drawer" class="lg:hidden mr-3">
+                    <x-icon name="o-bars-3" class="cursor-pointer" />
+                </label>
+         
+                {{-- Your logo --}}
+               <h1 class="text-center text-lg font-bold items-center">Hi! {{Auth::user()->name}}</h1>
+
+            </x-slot:brand>
+        </x-nav>
         <x-main full-width>
-            <x-slot:sidebar drawer="main-drawer" collapsible class="pt-3 text-white" style="background-color: #7400B8;">
+          
+            
+            
+            <x-slot:sidebar drawer="main-drawer" collapsible class="pt-3  text-white" style="background-color: #7400B8;">
          
                 {{-- Hidden when collapsed --}}
-                {{-- <div class="hidden-when-collapsed ml-5 font-black text-4xl text-yellow-500">mary</div> --}}
-         
-                {{-- Display when collapsed --}}
-                <div class="display-when-collapsed ml-5 font-black text-4xl text-orange-500">m</div>
-         
+               
               
                 <x-menu activate-by-route active-bg-color="bg-blue-50" class=" mt-20 items-center">
  
@@ -68,5 +81,7 @@
                 {{ $slot }} 
             </x-slot:content>
         </x-main>
+
+         
     </body>
 </html>

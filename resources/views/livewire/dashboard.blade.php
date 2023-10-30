@@ -24,6 +24,7 @@
     @endif 
         <div class="py-12">
 
+            
             <div class="container mx-auto mb-8 grid grid-cols-12 gap-4">
                 <div class="col-span-8">
                     <div class="stats mb-5 text-primary-content" style="background-color: #7400B8;">
@@ -120,123 +121,140 @@
             </div>
                 <hr>
 
-            <div class="max-w-7xl mt-8 mx-auto sm:px-6 lg:px-8 grid grid-cols-2 gap-4">
-                <!-- Left side with the card image -->
-                <div class="w-full lg:col-span-1">
-                    <div class="w-96 rounded-full mb-3 h-80">
-                        {{-- <img src="{{ asset('img/credit-card-transparent-background-png.webp') }}" />
-                         --}}
-                         <x-chart wire:model="myChart" class="h-80" />
-                    </div>
-                </div>
-                
-                <!-- Right side with statistics -->
-                <div class="w-full lg:col-span-1 mt-5">
-                    <!-- First row of statistics -->
-                    <div class="grid grid-cols-2 gap-4 mb-4">
-                        <x-stat
-                            title="Total Income"
-                            {{-- description="This month" --}}
-                            value="{{ Auth::user()->account_balance ?? 0 + Auth::user()->wallet->amount ?? 0}}"
-                            icon="o-arrow-trending-up"
-                            tooltip-bottom="There" class="bg-warning" />
+                <div class="max-w-7xl mt-8 mx-auto sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         
-                        <x-stat
-                            title="Total Expense"
-                            description="This month"
-                            value="{{ Auth::user()->expenses()->sum('amount') ?? 0 }}"
-                            icon="o-arrow-trending-down"
-                            tooltip-left="Ops!" class="bg-primary"/>
+                        
+                        <!-- Right side with statistics -->
+                        <div class="w-full mt-5">
+                            <!-- First row of statistics -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                                <x-stat
+                                    title="Total Income"
+                                    value="{{ Auth::user()->account_balance ?? 0 + Auth::user()->wallet->amount ?? 0 }}"
+                                    icon="o-arrow-trending-up"
+                                    tooltip-bottom="There"
+                                    class="bg-warning"
+                                />
+                                
+                                <x-stat
+                                    title="Total Expense"
+                                    description="This month"
+                                    value="{{ Auth::user()->expenses()->sum('amount') ?? 0 }}"
+                                    icon="o-arrow-trending-down"
+                                    tooltip-left="Ops!"
+                                    class="bg-primary"
+                                />
+                            </div>
+                
+                            <!-- Second row of statistics -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <x-stat
+                                    title="Goals"
+                                    description="This Year"
+                                    value="1,000,000"
+                                    icon="o-arrow-trending-down"
+                                    class="text-orange-500"
+                                    color="text-pink-500"
+                                    tooltip-right="Gosh!"
+                                    class="bg-secondary"
+                                />
+                
+                                <x-stat
+                                    title="Savings"
+                                    description="This month"
+                                    value="{{ Auth::user()->savings ?? 0 }}"
+                                    icon="o-arrow-trending-down"
+                                    class="text-orange-500"
+                                    color="text-pink-500"
+                                    tooltip-right="Gosh!"
+                                    class="bg-info"
+                                />
+                            </div>
+                        </div>
+
+                        <!-- Left side with the card image -->
+                        <div class="w-full">
+                            <div class="w-96 sm:w-full rounded-full mb-3 h-80">
+                                <x-chart wire:model="myChart" class="h-80" />
+                            </div>
+                        </div>
                     </div>
-    
-                    <!-- Second row of statistics -->
-                    <div class="grid grid-cols-2 gap-4">
-                        <x-stat
-                            title="Goals"
-                            description="This Year"
-                            value="1,000,000"
-                            icon="o-arrow-trending-down"
-                            class="text-orange-500"
-                            color="text-pink-500"
-                            tooltip-right="Gosh!"  class="bg-secondary"/>
-    
-                        <x-stat
-                            title="Savings"
-                            description="This month"
-                            value="{{ Auth::user()->savings ?? 0 }}"
-                            icon="o-arrow-trending-down"
-                            class="text-orange-500"
-                            color="text-pink-500"
-                            tooltip-right="Gosh!"  class="bg-info"/>
+                    <div class="grid gap-5">
+                        <!-- Add any additional content or buttons here -->
                     </div>
                 </div>
-                <div class="grid gap-5">
-                    {{-- <x-button label="Randomize" wire:click="randomize" class="btn-primary" spinner /> --}}
-                    {{-- <x-button label="Switch" wire:click="switch" spinner /> --}}
-                </div>
-            
-            </div>
            
             <hr>
-            <div class="container  mt-8 mx-auto grid grid-cols-12 gap-4">
-               <div class="col-span-4"> 
-                    <div class="card w-96 shadow-xl">
-                        <ul class="menu bg-base-200  rounded-box">
+        
+            <div class="container mt-8 mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- Left side with bill payments -->
+                <div class="col-span-1 sm:col-span-1">
+                    <div class="card w-full sm:w-96 shadow-xl">
+                        <ul class="menu bg-base-200 rounded-box">
                             <li>
-                              <h2 class="menu-title text-lg">Scheduled Bill Payment</h2>
-                              <ul>
-                                @foreach ($billPayments as $expense)
-                                    <li class="my-4"><button class="btn btn-neutral-content">{{ $expense->name }}<div class="badge">N {{ $expense->amount }}</div>
-                                         <div class="badge badge-secondary"  onclick="modalPayE{{ $expense->id }}.showModal()">pay</div></button>
+                                <h2 class="menu-title text-lg">Scheduled Bill Payment</h2>
+                                <ul>
+                                    @foreach ($billPayments as $expense)
+                                        <li class="my-4">
+                                            <button class="btn btn-neutral-content">
+                                                {{ $expense->name }}
+                                                <div class="badge">N {{ $expense->amount }}</div>
+                                                <div class="badge badge-secondary" onclick="modalPayE{{ $expense->id }}.showModal()">pay</div>
+                                            </button>
+                                        </li>
+                                        <!-- Modal code here -->
+                                        <x-modal id="modalPayE{{ $expense->id }}" title="Are you sure you want to pay for {{ $expense->name }}?">
+                                            Click "cancel" or press ESC to exit.
+                                            <x-form action="{{ route('pay-expense', $expense) }}" method="POST">
+                                                @csrf
+                                                <x-slot:actions>
+                                                    {{-- Note `onclick` is HTML --}}
+                                                    <x-button label="Cancel" onclick="modalPayE{{ $expense->id }}.close()" />
+                                                    <x-button label="Pay" class="btn-md text-white" type="submit" spinner="save" style="background-color: #7400B8;"/>
+                                                </x-slot:actions>
+                                            </x-form>
+                                        </x-modal>
+                                    @endforeach
+                                    <!-- Add more list items here -->
+                                    <li class="my-4"><button class="btn btn-neutral-content">Groceries<div class="badge">N 300000</div><div class="badge badge-secondary">pay</div></button></li>
+                                    <li class="my-4"><button class="btn btn-neutral-content">Electricity<div class="badge">N 40000</div><div class="badge badge-secondary">pay</div></button></li>
+                                    <li class="my-4"><button class="btn btn-neutral-content">Pet Food<div class="badge">N 9000</div></button></li>
+                                    <li class="my-4">
+                                        <button class="btn btn-neutral-content">Groceries<div class="badge">N 300000</div><div class="badge badge-secondary">pay</div></button>
                                     </li>
-
+                                    <!-- Add more list items here -->
+                                    <x-modal id="modalPayments" title="Add Expense">
                                    
-                                    <x-modal id="modalPayE{{ $expense->id }}" title="Are you sure you want to pay for {{ $expense->name }}?">
-                                        Click "cancel" or press ESC to exit.
-                                        <x-form action="{{ route('pay-expense', $expense) }}" method="POST">
+                                        <x-form action="{{ route('add-expense') }}" method="POST">
                                             @csrf
+                                            <x-input label="Expense Name" name="name"  required/>
+                                            <x-input label="Expense Amount" name="amount"  required/>
+                                           
+                                            {{-- <x-input label="Amount" wire:model="amount" prefix="USD" money hint="It submits an unmasked value" /> --}}
                                             <x-slot:actions>
-                                                {{-- Note `onclick` is HTML --}}
-                                                <x-button label="Cancel" onclick="modalPayE{{ $expense->id }}.close()" />
-                                                <x-button label="Pay" class="btn-md text-white" type="submit" spinner="save" style="background-color: #7400B8;"/>
+                                                <x-button label="Cancel" onclick="modalPayments.close()"/>
+                                                <x-button label="Add Expense" class="btn-md text-white" type="submit" spinner="save" style="background-color: #7400B8;"/>
                                             </x-slot:actions>
                                         </x-form>
                                     </x-modal>
-                                @endforeach
-                                <li class="my-4"><button class="btn btn-neutral-content">Groceries<div class="badge">N 300000</div><div class="badge badge-secondary">pay</div></button></li>
-                                <li class="my-4"><button class="btn btn-neutral-content">Electricity<div class="badge">N 40000</div><div class="badge badge-secondary">pay</div></button></li>
-                                <li class="my-4"><button class="btn btn-neutral-content">Pet Food<div class="badge">N 9000</div></button></li>
-                                
-                              </ul>
+                                </ul>
                             </li>
-                            <div class="text-center text-lg font-bold"><a class="link link-hover" style="color: #7400B8;"  onclick="modalPayments.showModal()">+ App Payment</a></div>
-
-                            <x-modal id="modalPayments" title="Add Expense">
-                                   
-                                <x-form action="{{ route('add-expense') }}" method="POST">
-                                    @csrf
-                                    <x-input label="Expense Name" name="name"  required/>
-                                    <x-input label="Expense Amount" name="amount"  required/>
-                                   
-                                    {{-- <x-input label="Amount" wire:model="amount" prefix="USD" money hint="It submits an unmasked value" /> --}}
-                                    <x-slot:actions>
-                                        <x-button label="Cancel" onclick="modalPayments.close()"/>
-                                        <x-button label="Add Expense" class="btn-md text-white" type="submit" spinner="save" style="background-color: #7400B8;"/>
-                                    </x-slot:actions>
-                                </x-form>
-                            </x-modal>
+                            <div class="text-center text-lg font-bold">
+                                <a class="link link-hover" style="color: #7400B8;" onclick="modalPayments.showModal()">+ App Payment</a>
+                            </div>
+                            <!-- Modal code here -->
                         </ul>
-
-                        
                     </div>
-               </div>
-
-               <div class="col-span-8 ps-4">
-                    <div class="card  shadow-xl">
-
+                </div>
+            
+                <!-- Right side with recent transactions -->
+                <div class="col-span-1 sm:col-span-1 ps-4">
+                    <div class="card shadow-xl">
                         <div class="overflow-x-auto">
-                            <table class="table table-zebra bg-base-200  rounded-box">
-                              <!-- head -->
+                            <table class="table table-zebra bg-base-200 rounded-box">
+                                <!-- Table contents here -->
+                                <!-- head -->
                               <thead>
                                 <tr>
                                   <th colspan="3"><h2 class="menu-title text-lg text-center">Recent Transactions</h2></th>
@@ -250,7 +268,7 @@
                                     <td>#</td>
                                     <td class="@if ($transaction->type == 'debit') text-error @else text-success @endif">{{ $transaction->type }}</td>
                                     <td>{{ $transaction->description }}</td>
-                                    <td>N {{ $transaction->amount }}</td>
+                                    <td>N{{ $transaction->amount }}</td>
                                     <td>{{ $transaction->reference_no }}</td>
                                      <td>{{ date_format(new DateTime($transaction->created_at), "d M Y, h:ia") }}</td>
                                     </tr>
@@ -259,13 +277,11 @@
                               </tbody>
                               <div>{{ $transactions->links() }}</div>
                             </table>
-                            
-                          </div>
-                        
+                        </div>
                     </div>
-               </div>
+                </div>
             </div>
+            
         </div>
        
-    
 </div>
