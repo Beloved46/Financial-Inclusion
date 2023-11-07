@@ -20,18 +20,18 @@ class BotmanController extends Controller
     {
         
         DriverManager::loadDriver(\BotMan\Drivers\Web\WebDriver::class);
-        
+
         $botman = BotManFactory::create(config('botman.web'));
      
         $botman->hears('{message}', function($botman, $message) {
-            Log::info(('Received message: ' . $message));
+           
             if ($message == 'hi') {
-                Log::info(('User said "hi"'));
+               
                 $this->askName($botman);
             }
             
             else{
-                Log::info('User said something else');
+               
                 $botman->reply("Start a conversation by saying hi.");
             }
    

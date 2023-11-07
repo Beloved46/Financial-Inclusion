@@ -1,10 +1,10 @@
 <div>
     {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
     
-        <x-slot name="header">
+        {{-- <x-slot name="header">
 
            //
-        </x-slot>
+        </x-slot> --}}
         @if (session('success'))
             <div class="toast toast-center toast-top">
             
@@ -14,14 +14,14 @@
             </div>
         @endif
 
-    @if (session('error'))
-        <div class="toast toast-center toast-top">
-        
-            <div class="alert alert-error">
-            <span>{{ session('error') }}</span>
+        @if (session('error'))
+            <div class="toast toast-center toast-top">
+            
+                <div class="alert alert-error">
+                <span>{{ session('error') }}</span>
+                </div>
             </div>
-        </div>
-    @endif 
+        @endif 
         <div class="py-12">
 
             
@@ -195,8 +195,9 @@
                                 <h2 class="menu-title text-lg">Scheduled Bill Payment</h2>
                                 <ul>
                                     @foreach ($billPayments as $expense)
-                                        <li class="my-4">
-                                            <button class="btn btn-neutral-content">
+                                        <li class="rounded-lg p-4 flex items-center justify-between">
+                                           
+                                            <button class="btn bg-white btn-neutral-content flex-grow">
                                                 {{ $expense->name }}
                                                 <div class="badge">N {{ $expense->amount }}</div>
                                                 <div class="badge badge-secondary" onclick="modalPayE{{ $expense->id }}.showModal()">pay</div>
@@ -216,12 +217,26 @@
                                         </x-modal>
                                     @endforeach
                                     <!-- Add more list items here -->
-                                    <li class="my-4"><button class="btn btn-neutral-content">Groceries<div class="badge">N 300000</div><div class="badge badge-secondary">pay</div></button></li>
-                                    <li class="my-4"><button class="btn btn-neutral-content">Electricity<div class="badge">N 40000</div><div class="badge badge-secondary">pay</div></button></li>
-                                    <li class="my-4"><button class="btn btn-neutral-content">Pet Food<div class="badge">N 9000</div></button></li>
+                                    <li class=" rounded-lg p-4 flex items-center justify-between">
+                                        
+                                        <button class="btn bg-white btn-neutral-content flex-grow">
+                                            Groceries
+                                            <div class="badge">N 300000</div>
+                                            <div class="badge badge-secondary">pay</div>
+                                        </button>
+                                    </li>
+                                    <li class=" rounded-lg p-4 flex items-center justify-between">
+                                       
+                                        <button class="btn bg-white btn-neutral-content flex-grow">
+                                            Electricity
+                                            <div class="badge">N 40000</div>
+                                            <div class="badge badge-secondary">pay</div>
+                                        </button>
+                                    </li>
+                                   
                                     <!-- Add more list items here -->
                                     <x-modal id="modalPayments" title="Add Expense">
-                                   
+                                       
                                         <x-form action="{{ route('add-expense') }}" method="POST">
                                             @csrf
                                             <x-input label="Expense Name" name="name"  required/>
@@ -243,6 +258,7 @@
                         </ul>
                     </div>
                 </div>
+                
             
                 <!-- Right side with recent transactions -->
                 <div class="col-span-1 sm:col-span-1 ps-4">

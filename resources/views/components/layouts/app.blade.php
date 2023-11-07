@@ -14,6 +14,7 @@
 
     </head>
     <body class="min-h-screen font-sans antialiased">
+        
         <x-nav sticky full-width class="pt-3  text-white" style="background-color: #7400B8;">
  
             <x-slot:brand>
