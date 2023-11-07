@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use BotMan\BotMan\BotManFactory;
+use BotMan\BotMan\Cache\LaravelCache;
 use BotMan\BotMan\Drivers\DriverManager;
 use BotMan\BotMan\Messages\Incoming\Answer;
+use Illuminate\Support\Facades\Log;
+use PSpell\Config;
 
 class BotmanController extends Controller
 {
@@ -15,18 +18,20 @@ class BotmanController extends Controller
      */
     public function handle()
     {
-        // $botman = BotManFactory::create($config, new LaravelCache());
+        
         DriverManager::loadDriver(\BotMan\Drivers\Web\WebDriver::class);
-        $botman = BotManFactory::create($config);
-        $botman = app('botman');
-   
+        
+        $botman = BotManFactory::create(config('botman.web'));
+     
         $botman->hears('{message}', function($botman, $message) {
-   
+            Log::info(('Received message: ' . $message));
             if ($message == 'hi') {
+                Log::info(('User said "hi"'));
                 $this->askName($botman);
             }
             
             else{
+                Log::info('User said something else');
                 $botman->reply("Start a conversation by saying hi.");
             }
    

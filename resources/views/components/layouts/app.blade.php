@@ -97,7 +97,7 @@
     <script>
         var botmanWidget = {
             aboutText: 'Start the conversation with Hi',
-            introMessage: "WELCOME TO ALL FINPAL",
+            introMessage: "WELCOME TO FINPAL",
             mainColor: "#7400B8",
             title: "Finpal Bot",
             chatServer:"/botman",
