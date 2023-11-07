@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Expense;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\AddExpenseRequest;
 use App\Models\BillPayment;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\AddExpenseRequest;
 
 class AddExpense extends Controller
 {
@@ -16,7 +17,7 @@ class AddExpense extends Controller
     {
         try {
 
-            BillPayment::create($request->validated());
+            BillPayment::create(array_merge($request->validated(), ['user_id' => Auth::user()->id]));
 
             return back()->with("success","Expense added successfully");
 

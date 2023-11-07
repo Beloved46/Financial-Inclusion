@@ -39,7 +39,7 @@ class Dashboard extends Component
     
     public function render()
     {
-        $billPayments = BillPayment::where('is_paid', false)->latest()->get();
+        $billPayments = BillPayment::where('user_id', Auth::user()->id)->where('is_paid', false)->latest()->get();
 
         $transactions = Auth::user()->transactions()->latest()->paginate(10);
         
