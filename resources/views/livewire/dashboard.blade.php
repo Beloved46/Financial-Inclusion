@@ -5,22 +5,24 @@
 
            //
         </x-slot> --}}
+      
         @if (session('success'))
-            <div class="toast toast-center toast-top">
+        
+            {{-- <div class="toast toast-center toast-top"> --}}
             
-                <div class="alert alert-success">
-                <span>{{ session('success') }}</span>
+                <div class="alert alert-success flex items-center justify-center">
+                    <span class="">{{ session('success') }}</span>
                 </div>
-            </div>
+            {{-- </div> --}}
         @endif
 
         @if (session('error'))
-            <div class="toast toast-center toast-top">
+            {{-- <div class="toast toast-center toast-top"> --}}
             
-                <div class="alert alert-error">
-                <span>{{ session('error') }}</span>
+                <div class="alert alert-error flex items-center justify-center">
+                    <span>{{ session('error') }}</span>
                 </div>
-            </div>
+            {{-- </div> --}}
         @endif 
         <div class="py-12">
 

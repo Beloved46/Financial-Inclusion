@@ -14,7 +14,7 @@
 
     </head>
     <body class="min-h-screen font-sans antialiased">
-        
+        <x-toast /> 
         <x-nav sticky full-width class="pt-3  text-white" style="background-color: #7400B8;">
  
             <x-slot:brand>
@@ -98,7 +98,7 @@
     <script>
         var botmanWidget = {
             aboutText: 'Start the conversation with Hi',
-            introMessage: "WELCOME TO FINPAL",
+            introMessage: "WELCOME TO FINPAL AI",
             mainColor: "#7400B8",
             title: "Finpal Bot",
             chatServer:"/botman",

@@ -33,6 +33,7 @@ class Withdrawfund extends Controller
             $this->createTransaction($request->amount, Transaction::DEBIT, 'savings account debited');
 
             return back()->with('success',$request->amount .' has been withdrawn to your bank account');
+            
 
         } catch (WalletFundException $e) {
             return back()->with('error',$e->getMessage());

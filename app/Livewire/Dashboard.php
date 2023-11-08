@@ -7,10 +7,11 @@ use App\Models\BillPayment;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Livewire\WithPagination;
+use Mary\Traits\Toast;
 
 class Dashboard extends Component
 {
-    use WithPagination;
+    use WithPagination, Toast;
     
     public array $myChart = [
         'type' => 'pie',

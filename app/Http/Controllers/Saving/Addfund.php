@@ -9,6 +9,7 @@ use App\Models\Transaction;
 use App\Trait\TransactionTrait;
 use Illuminate\Support\Facades\Auth;
 
+
 class Addfund extends Controller
 {
     use TransactionTrait;
@@ -31,6 +32,7 @@ class Addfund extends Controller
             $this->createTransaction($request->amount, Transaction::CREDIT, 'savings account fund');
             
             return back()->with('success',$request->amount .' has been added to your savings');
+        
 
         } catch (WalletFundException $e) {
             return back()->with('error',$e->getMessage());
